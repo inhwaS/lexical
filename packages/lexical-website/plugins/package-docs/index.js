@@ -40,6 +40,18 @@ module.exports = async function (context, options) {
           windowsPathsNoEscape: true,
         }),
       );
+
+      // Front matter mapping for packages
+      const frontMatterMapping = {
+        lexical: ['sidebar_position: 1', 'sidebar_label: lexical (core)'].join(
+          '\n',
+        ),
+        'lexical-yjs': [
+          'sidebar_position: 2',
+          'sidebar_label: lexical-yjs',
+        ].join('\n'),
+      };
+
       for (const srcPath of glob.sync(`${options.baseDir}/*/README.md`, {
         windowsPathsNoEscape: true,
       })) {
@@ -59,7 +71,7 @@ module.exports = async function (context, options) {
             path.dirname(targetPath),
             srcPath,
           )}`,
-          options.packageFrontMatter[folderName],
+          frontMatterMapping[folderName],
           `custom_edit_url: ${options.editUrl.replace(
             /\/$/,
             '',

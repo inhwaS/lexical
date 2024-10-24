@@ -191,6 +191,7 @@ const docusaurusPluginTypedocConfig = {
     './src/plugins/lexical-typedoc-plugin-no-inherit',
     './src/plugins/lexical-typedoc-plugin-module-name',
     'typedoc-plugin-rename-defaults',
+    'typedoc-plugin-frontmatter',
   ],
   sidebar: {
     autoConfiguration: false,
@@ -247,12 +248,6 @@ const config = {
           {
             baseDir: path.resolve(__dirname, '..'),
             editUrl: `${GITHUB_REPO_URL}/tree/main/packages/`,
-            packageFrontMatter: {
-              lexical: [
-                'sidebar_position: 1',
-                'sidebar_label: lexical (core)',
-              ].join('\n'),
-            },
             targetDir: path.resolve(__dirname, 'docs/packages'),
           },
         ],
